@@ -20,6 +20,9 @@ docker run -it \
 
 # to disconnect: /q + enter
 
+# to connect to database using pgcli
+pgcli -h localhost -p 5432 -u root -d ny_taxi
+
 # to reconnect to database: psql -h <hostname> -U <username> -d <database_name>
 
 #to run pgadmin container
