@@ -20,10 +20,15 @@ docker run -it \
 
 # to disconnect: /q + enter
 
+# to start back up container
+docker start pg-database #or include the container id
+
 # to connect to database using pgcli
 pgcli -h localhost -p 5432 -u root -d ny_taxi
 
 # to reconnect to database: psql -h <hostname> -U <username> -d <database_name>
+# to reconnect to database: 
+psql -h localhost -U root -d ny_taxi
 
 #to run pgadmin container
 #run container
@@ -34,3 +39,22 @@ docker run -it \
     --network=pg-network \
     --name pgadmin \
     dpage/pgadmin4
+
+# to start pg admin container
+docker start pgadmin #or container id
+
+
+#to convert the upload_data jupyter file to a python script
+jupyter nbconvert --to script upload_data.ipynb
+
+#to turn a zipped file into normal csv and then save it into the URL variable and to run ingest_data.py script
+URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+python ingest_data.py \
+    --user=root \
+    --password=root \
+    --host=localhost \
+    --port=5432 \
+    --db=ny_taxi \
+    --table_name=yellow_taxi_trips \
+    --url=${URL} \
