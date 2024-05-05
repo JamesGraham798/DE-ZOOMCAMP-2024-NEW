@@ -83,6 +83,9 @@ docker run -it \
 # to start a docker compose
 docker-compose up -d
 
-# to shut it down
+# to shut it down and delete containers
 docker-compose down
 # this will also remove the containers, runing docker compose up will recreate the containers
+
+# to shut it down but not delete the containers you can do the following:
+docker-compose stop
