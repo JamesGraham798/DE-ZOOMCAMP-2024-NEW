@@ -82,6 +82,7 @@ docker run -it \
 
 # to start a docker compose
 docker-compose up -d
+
 # to shut it down
 docker-compose down
 # this will also remove the containers, runing docker compose up will recreate the containers
